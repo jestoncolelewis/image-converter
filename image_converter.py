@@ -2,7 +2,7 @@ import glob
 import os
 import argparse
 import cv2 as cv
-from photo_functions import *
+from image_functions import *
 
 path = os.getcwd()
 images = glob.glob("input/*")
