@@ -3,8 +3,8 @@ Inspired by 2022's CS50 course, I built this basic photo converter to work throu
 
 ## Use
 Command prompts are used to determine what mode the user wants to use.
-    * Grayscale
-    * Sepia
-    * Mirror
-    * Reflect (Still troubleshooting)
-    * Scale
+* Grayscale
+* Sepia
+* Mirror
+* Reflect (Still troubleshooting)
+* Scale
