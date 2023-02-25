@@ -13,6 +13,7 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 *reflect.ipynb
+*Layout.afphoto
 /__pycache__
 /.ipynb_checkpoints
 /input
