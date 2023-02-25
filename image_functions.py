@@ -65,11 +65,6 @@ def mirror(img, h, w):
         j = 0
     return img
 
-def reflect(img, h, w):
-    return img
-
-def scale(img, h , w):
-    factor = float(input('Do you want to increase or decrease the photo size?\nTo decrease put a number greater than 1\nTo increase put a number between 0 and 1\nNumber: '))
-
+def scale(img, h , w, factor):
     resized = cv.resize(img, (int(w/factor), int(h/factor)))
     return resized
