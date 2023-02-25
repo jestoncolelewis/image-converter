@@ -39,7 +39,8 @@ for image in images:
         cv.imwrite(os.path.join(f"{path}/output", new_name), mirror(img, h, w))
     if args.mode == "reflect":
         new_name = f"r_{img_name}"
-        cv.imwrite(os.path.join(f"{path}/output", new_name), reflect(img, h, w))
+        flip_img = cv.flip(img, 1)
+        cv.imwrite(os.path.join(f"{path}/output", new_name), flip_img)
     if args.mode == "scale":
         new_name = f"sc_{img_name}"
         cv.imwrite(os.path.join(f"{path}/output", new_name), scale(img, h, w))
