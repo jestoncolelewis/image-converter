@@ -6,5 +6,5 @@ Command prompts are used to determine what mode the user wants to use.
 * Grayscale
 * Sepia
 * Mirror
-* Reflect (Still troubleshooting)
+* Reflect
 * Scale
