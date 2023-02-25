@@ -17,6 +17,7 @@
 /.ipynb_checkpoints
 /input
 /output
+/archive
 
 # Mono auto generated files
 mono_crash.*
