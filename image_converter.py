@@ -46,10 +46,14 @@ half_option = tk.Radiobutton(window, text='.5x', variable=s, value=1)
 half_option.place(x='400',y='200')
 double_option = tk.Radiobutton(window, text='2x', variable=s, value=2)
 double_option.place(x='400',y='230')
-if s.get() == 1:
-    factor = 2.0
-if s.get() == 2:
-    factor = 0.5
+
+factor = 0
+def new_factor(factor):
+    if s.get() == 1:
+        factor = 2.0
+    if s.get() == 2:
+        factor = 0.5
+    return factor
 
 # Create new directory for output
 while True:
@@ -80,7 +84,7 @@ def process():
             cv.imwrite(os.path.join(f"{path}/output", new_name), flip_img)
         if var.get() == "scale":
             new_name = f"sc_{img_name}"
-            cv.imwrite(os.path.join(f"{path}/output", new_name), scale(img, h , w, factor))
+            cv.imwrite(os.path.join(f"{path}/output", new_name), scale(img, h , w, new_factor(factor)))
 
 # conversion action button
 conver_button = tk.Button(text='CONVERT', command=process)
