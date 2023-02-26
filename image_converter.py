@@ -1,11 +1,8 @@
-import glob
 import os
 import cv2 as cv
 from image_functions import *
 import tkinter as tk
 from tkinter import filedialog as fd
-
-path = os.getcwd()
 
 # build window
 window = tk.Tk()
@@ -17,10 +14,11 @@ window.geometry('700x365')
 input_label = tk.Label(window, text='Input', justify='center')
 input_label.place(x='20', y='15')
 
-# file browse and open
+# file browse and open and save
 def openfile():
     global images, path
     images = fd.askopenfilenames()
+    path = fd.askdirectory()
 images = ()
 open_button = tk.Button(window, text='Open', command=openfile)
 open_button.place(x='20', y='315')
@@ -55,13 +53,6 @@ def new_factor():
         factor = 0.5
     return factor
 
-# Create new directory for output
-while True:
-    if os.path.exists("./output") is True:
-        break
-    else:
-        os.mkdir("./output")
-
 def process():
     for image in images:
         img = cv.imread(image)
@@ -73,20 +64,20 @@ def process():
 
         if var.get() == "grayscale":
             new_name = f"g_{img_name}"
-            cv.imwrite(os.path.join(f"{path}/output", new_name), grayscale(img, h, w))
+            cv.imwrite(os.path.join(f"{path}/", new_name), grayscale(img, h, w))
         if var.get() == "sepia":
             new_name = f"s_{img_name}"
-            cv.imwrite(os.path.join(f"{path}/output", new_name), sepia(img, h, w))
+            cv.imwrite(os.path.join(f"{path}/", new_name), sepia(img, h, w))
         if var.get() == "mirror":
             new_name = f"m_{img_name}"
-            cv.imwrite(os.path.join(f"{path}/output", new_name), mirror(img, h, w))
+            cv.imwrite(os.path.join(f"{path}/", new_name), mirror(img, h, w))
         if var.get() == "reflect":
             new_name = f"r_{img_name}"
             flip_img = cv.flip(img, 1)
-            cv.imwrite(os.path.join(f"{path}/output", new_name), flip_img)
+            cv.imwrite(os.path.join(f"{path}/", new_name), flip_img)
         if var.get() == "scale":
             new_name = f"sc_{img_name}"
-            cv.imwrite(os.path.join(f"{path}/output", new_name), scale(img, h , w, new_factor()))
+            cv.imwrite(os.path.join(f"{path}/", new_name), scale(img, h , w, new_factor()))
 
 # conversion action button
 process_button = tk.Button(text='PROCESS', command=process)
