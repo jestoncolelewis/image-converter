@@ -10,8 +10,13 @@ window.title('Image Converter')
 window.resizable(False, False)
 window.geometry('700x365')
 
+file_scroll = tk.Scrollbar(window)
+file_box = tk.Listbox(window, yscrollcommand= file_scroll.set, height=15, width=30)
+file_box.place(x='20', y='50')
+file_scroll.config(command=file_box.yview)
+
 # input label
-input_label = tk.Label(window, text='Input', justify='center')
+input_label = tk.Label(window, text='Input', anchor='center')
 input_label.place(x='20', y='15')
 
 # file browse and open and save
@@ -19,12 +24,17 @@ def openfile():
     global images, path
     images = fd.askopenfilenames()
     path = fd.askdirectory()
+    for name in images:
+        img_name = name[:]
+        name_l = name.rfind('/')
+        img_name = name[name_l+1:]
+        file_box.insert('end', img_name)
 images = ()
 open_button = tk.Button(window, text='Open', command=openfile)
 open_button.place(x='20', y='315')
 
 # output label
-output_label = tk.Label(window, text='Output', justify='center')
+output_label = tk.Label(window, text='Output', anchor='center')
 output_label.place(x='380', y='15')
 
 # options buttons
