@@ -86,7 +86,7 @@ def process():
             cv.imwrite(os.path.join(f"{path}/output", new_name), scale(img, h , w, new_factor()))
 
 # conversion action button
-conver_button = tk.Button(text='PROCESS', command=process)
-conver_button.place(x='440', y='315')
+process_button = tk.Button(text='PROCESS', command=process)
+process_button.place(x='440', y='315')
 
 window.mainloop()
