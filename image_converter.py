@@ -6,7 +6,6 @@ import tkinter as tk
 from tkinter import filedialog as fd
 
 path = os.getcwd()
-images = glob.glob("input/*")
 
 # build window
 window = tk.Tk()
@@ -18,11 +17,13 @@ window.geometry('700x365')
 input_label = tk.Label(window, text='Input', justify='center')
 input_label.place(x='20', y='15')
 
-# file browse
-""" def openfile():
-    return fd.askopenfile()
+# file browse and open
+def openfile():
+    global images, path
+    images = fd.askopenfilenames()
+images = ()
 open_button = tk.Button(window, text='Open', command=openfile)
-open_button.place(x='20', y='315') """
+open_button.place(x='20', y='315')
 
 # output label
 output_label = tk.Label(window, text='Output', justify='center')
@@ -64,7 +65,9 @@ while True:
 def process():
     for image in images:
         img = cv.imread(image)
-        img_name = image[len("input/") :]
+        img_name = image[:]
+        name_l = image.rfind('/')
+        img_name = image[name_l+1:]
         h = img.shape[0]
         w = img.shape[1]
 
