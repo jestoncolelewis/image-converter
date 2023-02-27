@@ -21,7 +21,7 @@ input_label.place(x='20', y='15')
 
 # file browse and open and save
 def openfile():
-    global images, path
+    global images
     images = fd.askopenfilenames()
     for name in images:
         img_name = name[:]
