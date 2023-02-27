@@ -23,7 +23,6 @@ input_label.place(x='20', y='15')
 def openfile():
     global images, path
     images = fd.askopenfilenames()
-    path = fd.askdirectory()
     for name in images:
         img_name = name[:]
         name_l = name.rfind('/')
@@ -64,6 +63,7 @@ def new_factor():
     return factor
 
 def process():
+    path = fd.askdirectory()
     for image in images:
         img = cv.imread(image)
         img_name = image[:]
